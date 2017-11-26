@@ -868,7 +868,7 @@ function play(_xxx){
       t_fin = Date.now();
       t_dif = t_fin - t_ini;
 
-      txt="<h3>Rapid Memory " + (cantidadBack-resta) + "-back " +  $("#milis-val").val() + " digits span Results!</h3>"  + positionTxt + " " + soundTxt + " " + imageTxt + " " + colorTxt + " " + vaTxt + " " + avTxt + "<br>" + sumaTxtTxt +
+      txt="<h3>Movie " + (cantidadBack-resta) + "-back </h3>"  + positionTxt + " " + soundTxt + " " + imageTxt + " " + colorTxt + " " + vaTxt + " " + avTxt + "<br>" + sumaTxtTxt +
          "Score: "+ porcentaje_ok + "% <br>" + "time:" + getDuration(t_dif) + " <br> " + recomendacion;
 
       $("#results").html(txt);
@@ -1015,8 +1015,9 @@ function play(_xxx){
 
   $("#v"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).get(0).currentTime=salidas1[currentPasada];
   console.log(salidas1[currentPasada])
-  $("#v"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).get(0).play();
-  $("#d"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).css('visibility', 'visible');
+  setTimeout(function(){ $("#v"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).get(0).play(); },0); 
+  
+   $("#d"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).css('visibility', 'visible'); 
   // $("#d"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).show();
 
   //kill2=setTimeout(function(){ muestra(); },300);
@@ -1027,7 +1028,7 @@ function play(_xxx){
    $("#pasadas").html(pasadas);
 
   killInterval = setTimeout(function(){ currentPasada++; play(1);},myInterval);
-  kill4=setTimeout(function(){ limpiar(); },myInterval1);
+  kill4=setTimeout(function(){ $("#v"+ salidas[currentPasada][0] + "" + salidas[currentPasada][1] ).get(0).currentTime=0; limpiar(); },myInterval1);
    
 
 }//en play()
